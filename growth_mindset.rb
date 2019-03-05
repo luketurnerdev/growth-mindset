@@ -13,28 +13,40 @@ require "simple-random"
 class Checkin
     
 
-    attr_accessor :anxiety_scores, :health_tips
+    attr_accessor :anxiety_scores, :health_tips, :entries
+
+    attr_reader :username
 
     #Class variable => This applies to all instances
 
-    def initialize
+    def initialize(username)
+        #assign username based on user input during instantiation
+
+        @username = username
+
         #Init anxiety_scores as an empty array 
 
         @anxiety_scores = []
 
-        #Hash of number values of the tips => the tips themselves
+        #Array of mental health tips
 
         @health_tips = 
-        {
-            :tip1 => "Make sure to drink plenty of water, and eat plenty of fruits and vegetables.",
-            :tip2 => "Take time to work on your relationships with others.", 
-            :tip3 => "Try developing a list of things you are grateful for.", 
-            :tip4 => "Getting out into nature can be greatly refreshing for the mind.",
-            :tip5 => "Make a list of things you want to accomplish today, and how you are going to do these things.",
-            :tip6 => "Try giving to others. Being charitable can increase social well-being.",
-            :tip7 => "Don't be afraid to reach out to others, they may be going through similar problems!",
-            :tip8 => "Pick up a new hobyy, or work on one you haven't done in a while.",
-        }
+        
+        [
+        "Make sure to drink plenty of water, and eat plenty of fruits and vegetables.",
+        "Take time to work on your relationships with others.",
+        "Try developing a list of things you are grateful for.",
+        "Getting out into nature can be greatly refreshing for the mind.",
+        "Make a list of things you want to accomplish today, and how you are going to do these things.",
+        "Try giving to others. Being charitable can increase social well-being.",
+        "Don't be afraid to reach out to others, they may be going through similar problems!",
+        "Pick up a new hobby, or work on one you haven't done in a while."
+
+        ]
+
+        @entries = []
+
+        
 
 
     end
@@ -72,7 +84,7 @@ class Checkin
         while !entry
 
         
-        puts "\nWelcome to Growth Mindset.\n\nPlease select from the following options:"
+        puts "\nWelcome to Growth Mindset, #{@username}!\n\nPlease select from the following options:"
         puts "1. Anxiety Log\n2. Journal Entry\n3. Exit "
         puts "Type the number or the word of your selection: "
         choice = gets.chomp.downcase
@@ -229,7 +241,9 @@ class Checkin
 
         #Firstly we will have the tips be pre-made, then we can try to fetch them from online using a gem.
 
-        puts "Tip goes here."
+        random = Random.new
+        
+        puts "\n\n#{health_tips[random.rand(1..@health_tips.length)]}"
         main_menu
     end
 
@@ -254,9 +268,28 @@ class Checkin
 
 
     def journal_entry
-        puts "Journal entry goes here."
-
+        puts ("would you like to view an old journal or add a new one ? \n Enter (1) for adding and (2) for viewing the past journals\n")
+        ret_val = gets.chomp()
+        if(ret_val == "1")
+            puts("start typing ... \n ")
+            new_journal = gets.chomp()
+            date = Time.now
+            new_journal = date.to_s + " " +  new_journal
+            
+            #method for updating the key everytime the user calls to add new journal so we can save it. 
+            # date and time hash
+            @entries.push(new_journal)
+            p @entries
+        end
+        if(ret_val =="2")
+            if(entries == [])
+                p "no journals added"
+            else
+            p @entries
+            end
+        end
         main_menu
+
         #Maybe let the user choose if they want to view past entries (if they exist)
         #   or enter a new one. These should be stored as strings, and marked with the date and time.
         #   so we could have a hash ==> my_journal = {:entry1 => "Today I felt good" + "This entry was
@@ -267,7 +300,32 @@ class Checkin
 end
 
 
-luke = Checkin.new
-# luke.main_menu
-# luke.anxiety_scores
-luke.main_menu
+
+login = {
+    :luke => "password123",
+    :sid => "password124"
+        }
+ret = 0
+while (ret == 0 )
+    puts ( "enter login ID")
+        id = gets.chomp()
+    puts ("enter password" )
+        val = gets.chomp()
+
+        if(id === "luke" && login[:luke] == val )
+            ret = 1
+            break
+        end
+        if(id === "sid" && login[:sid] == val)
+            puts "Welcome sid"
+            ret = 1
+        end
+        if ( ret == 0)
+        puts ("\ninvalid login ID or password. please try again")
+        end
+end
+
+user = Checkin.new ("Luke")
+user.main_menu
+
+
