@@ -84,8 +84,8 @@ class Checkin
         while !entry
 
         
-        puts "\nWelcome to Growth Mindset, #{@username}!\n\nPlease select from the following options:"
-        puts "1. Anxiety Log\n2. Journal Entry\n3. Exit "
+        puts "\nWelcome to Growth Mindset, #{@username.capitalize}!\n\nPlease select from the following options:"
+        puts "1. Anxiety Log\n2. Journal Entry\n3. Resources\n4. Exit "
         puts "Type the number or the word of your selection: "
         choice = gets.chomp.downcase
         
@@ -98,8 +98,12 @@ class Checkin
             journal_entry
             entry = true
 
+        elsif choice == "3" or choice == "resources"
+            resources
+            entry = true
 
-        elsif choice == "3" or choice == "exit"
+
+        elsif choice == "4" or choice == "exit"
             puts "Thanks for using the app!"
             #Maybe save changes to file?
             exit
@@ -239,10 +243,12 @@ class Checkin
         # This will likely be stored in a hash, so that we can identify unique keys.
         # Once all tips have been used, we might display a message like "out of new tips, try again later!"
 
-        #Firstly we will have the tips be pre-made, then we can try to fetch them from online using a gem.
+        #Firstly we will have the tips be pre-made, then we can try to fetch them from online using a gem (if there is time)
 
         random = Random.new
         
+        #Select a random tip from the list using a new instance of Random
+
         puts "\n\n#{health_tips[random.rand(1..@health_tips.length)]}"
         main_menu
     end
@@ -268,12 +274,14 @@ class Checkin
 
 
     def journal_entry
-        puts ("would you like to view an old journal or add a new one ? \n Enter (1) for adding and (2) for viewing the past journals\n")
+        puts ("Would you like to view existing journal entries or add a new one ?\n Enter (1) to add, or (2) to view previous entries.\n")
         ret_val = gets.chomp()
         if(ret_val == "1")
-            puts("start typing ... \n ")
+            puts("Start typing ... \n ")
             new_journal = gets.chomp()
             date = Time.now
+
+            #Add the new entry to the array
             new_journal = date.to_s + " " +  new_journal
             
             #method for updating the key everytime the user calls to add new journal so we can save it. 
@@ -283,11 +291,12 @@ class Checkin
         end
         if(ret_val =="2")
             if(entries == [])
-                p "no journals added"
+                p "No journals added."
             else
             p @entries
             end
         end
+
         main_menu
 
         #Maybe let the user choose if they want to view past entries (if they exist)
@@ -299,33 +308,71 @@ class Checkin
     
 end
 
+def resources
+    puts "Here are some resources for help with mental health issues (press the number to open a link): "
+    puts "\n1. Black Dog Institute"
+    puts "\n2. Headspace  "
+    puts "\n3. Lifeline "
+
+    puts "\n4. Exit to main menu."
+
+    exiting = false
+
+    until exiting
+        selection = gets.chomp.downcase
+        if selection == "1" or selection == "black dog"
+            system("open http://www.blackdoginstitute.org.au/public/gettinghelp/overview.cfm")
+        elsif selection == "2" or selection == "heaspace"
+            system("open http://www.headspace.org.au/")
+        elsif selection == "3" or selection == "Lifeline"
+            system("open http://www.lifeline.org.au/")
+        elsif selection == "4" or selection == "exit"
+            exiting = true
+            main_menu
+
+        end
+    end
+
+    
+
+    
+
+end
 
 
-login = {
+
+def login_screen
+
+    login = 
+    {
     :luke => "password123",
     :sid => "password124"
-        }
+    }
+
 ret = 0
 while (ret == 0 )
-    puts ( "enter login ID")
-        id = gets.chomp()
-    puts ("enter password" )
-        val = gets.chomp()
+    puts ( "Welcome! Please enter your username.")
+        id = gets.chomp
+    puts ("Please enter your password." )
+        val = gets.chomp
 
-        if(id === "luke" && login[:luke] == val )
+        if (id === "luke" && login[:luke] == val )
             ret = 1
-            break
         end
         if(id === "sid" && login[:sid] == val)
-            puts "Welcome sid"
             ret = 1
         end
         if ( ret == 0)
-        puts ("\ninvalid login ID or password. please try again")
+        puts ("\nInvalid login ID or password. Please try again.")
         end
 end
 
-user = Checkin.new ("Luke")
+@username = id
+
+end
+
+login_screen
+user = Checkin.new (@username)
 user.main_menu
 
 

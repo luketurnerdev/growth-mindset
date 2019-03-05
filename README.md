@@ -77,10 +77,16 @@ DESIGN AND PLANNING PROCESS
 
 Initally, I (Luke) sat down and brainstormed a lot of different ideas for an app. My intention was to have a free-flowing thought process in which no idea a bad idea. A lot of the ideas had to be abandoned due to scope (there are only 2 days to work on the app), but this 'judgement-free' style of brainstorming worked well for creating ideas.
 
-[insert screenshot of brainstorm]
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/brainstorming-written.jpg "Brainstorming, written")
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/brainstorming-typed.png "Brainstorming, typed")
+
+    2. Planning - Flowcharts, trello
 
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/brainstorming-written.jpg "Brainstorming")
+
+
 
 
 
