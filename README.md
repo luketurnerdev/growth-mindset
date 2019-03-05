@@ -84,6 +84,38 @@ Initally, I (Luke) sat down and brainstormed a lot of different ideas for an app
 
     2. Planning - Flowcharts, trello
 
+After discussions with my tutor, I decided to keep the scope of the project quite small, and focus on a few core features. I then drew a flowchart of the way that the user might move through the system.
+
+This was the original flowchart:
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/flowchart-core.jpg "Whiteboard flowchart.")
+
+The flowchart shows the core functionality of the program: 
+- Let the user enter anxiety ratings
+- Compare these ratings and give a positive (encouragement) or negative (random tip) outcome
+- Let the user submit journal entries and view past entries
+- Exit the application.
+
+I also then created a Trello board, which contained various categories:
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/first-trello.png "Initial Trello board.")
+
+The board contained the following categories (not all pictured):
+
+- User Stories (for general planning )
+- Core features (things to definitely be included)
+- Extra features (things to add if there was time)
+- Backlog (things to be done but haven't had a date or user assigned yet)
+- To Do (Tasks to be done soon with a deadline set)
+- In deveopment (features that are currently being coded (half-working etc)
+- Testing (All 'working' features were moved here until final code checks on the last day (for edge cases etc))
+- Complete (features that are safe and ready to 'deploy')
+
+
+
+
+
+
 
 
 
