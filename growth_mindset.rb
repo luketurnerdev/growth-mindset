@@ -8,17 +8,61 @@
 
 #Make sure user can only enter numbers between 1-10, no letter strings allowed
 
+require "simple-random"
+
 class Checkin
+    
 
-    attr_accessor :anxiety_scores
+    attr_accessor :anxiety_scores, :health_tips
 
-
+    #Class variable => This applies to all instances
 
     def initialize
         #Init anxiety_scores as an empty array 
 
         @anxiety_scores = []
+
+        #Hash of number values of the tips => the tips themselves
+
+        @health_tips = 
+        {
+            :tip1 => "Make sure to drink plenty of water, and eat plenty of fruits and vegetables.",
+            :tip2 => "Take time to work on your relationships with others.", 
+            :tip3 => "Try developing a list of things you are grateful for.", 
+            :tip4 => "Getting out into nature can be greatly refreshing for the mind.",
+            :tip5 => "Make a list of things you want to accomplish today, and how you are going to do these things.",
+            :tip6 => "Try giving to others. Being charitable can increase social well-being.",
+            :tip7 => "Don't be afraid to reach out to others, they may be going through similar problems!",
+            :tip8 => "Pick up a new hobyy, or work on one you haven't done in a while.",
+        }
+
+
     end
+    
+    
+
+    def populate_random_tips
+        #We need to add to the list of health tips by running through a loop
+        # Example tip: {:tip1 => "Go for a run!"}
+
+
+        #Start iteration at the end of the current list of hashes (need to test this)
+
+        # i = @health_tips.keys.length + 1
+        # while i < 5
+        #     current_key = "key#{i}".to_sym
+        #     @health_tips[current_key] = "random tip goes here"
+        #     i += 1
+        # end
+
+        
+
+
+        
+    end
+
+
+    
 
     def main_menu
 
@@ -102,14 +146,13 @@ class Checkin
     
         end
             
-            puts "Thank you for recording your score of #{level}."
+            puts "\nThank you for recording your score of #{level}."
     
             #Take input from recently entered level variable
             #Add this to a list of values
 
             @anxiety_scores.push(level)
             
-            #Print the user's anxiety scores
 
             if @anxiety_scores.length == 1
                
@@ -137,7 +180,6 @@ class Checkin
     
     def compare_levels(list)
         
-        puts list
 
 
         #First part: Compare the current value to the last one and display if the user is 
@@ -146,37 +188,68 @@ class Checkin
         if list[-1] < list[-2]
             #Randomize encouragement message ? 
             puts "\nIt looks like you are doing better than your last entry! Go you!"
+            display_average
             main_menu
 
         else
-            puts "\nIt looks like you aren't doing so well.\nWould you like a mental health tip? (Y/N)"
-            selection = gets.chomp.downcase
-
+            display_average
             entry = false
-
-            #Check for valid Y or N input
-            
             while !entry
-                if selection == ("y")
-                    entry = true
-                    display_tip
-                elsif selection == ("n")
-                    main_menu
+
+                puts "\nIt looks like you aren't doing so well.\nWould you like a mental health tip? (Y/N)"
+                selection = gets.chomp.downcase
+
+                #Check for valid Y or N input
+
+                if selection == "y" or selection == "yes"
+                        entry = true
+                        display_tip
+                elsif selection == "n" or selection == "no"
+                        entry = true
+                        main_menu
                 else
-                    "Invalid input, please type either Y or N."
+                       puts "\nInvalid input, please type either Y or N. "
                 end
+
+
             end
+            
             
 
         end
         
-        #Second part: Display the average, e.g., "You have an average mental health score of
-        #   7 over 9 entries. (sum of entries / amount of entries)
-
-
-
-        #Lastly, after comparison made, we will return to the main menu.
+        
     
+    end
+
+    def display_tip
+        #We need to have a pre-defined list of tips to display to the user.
+        # This will likely be stored in a hash, so that we can identify unique keys.
+        # Once all tips have been used, we might display a message like "out of new tips, try again later!"
+
+        #Firstly we will have the tips be pre-made, then we can try to fetch them from online using a gem.
+
+        puts "Tip goes here."
+        main_menu
+    end
+
+    def display_average
+       
+        #To find average, we should loop through the @anxiety_scores array and add the values to a sum,
+            #then divide by the amount of entries
+
+        scores_average = 0
+        sum = 0    
+        i = 0
+        while i < @anxiety_scores.length
+            sum += @anxiety_scores[i]
+            
+            
+            i+=1
+            
+        end
+        scores_average = sum / @anxiety_scores.length
+        puts  "\nYour average score over #{@anxiety_scores.length} entries is #{scores_average}."
     end
 
 
@@ -190,13 +263,11 @@ class Checkin
         #   recorded at (Date.time"} etc.
     end
 
-    def display_tip
-        puts "Tip goes here."
-        main_menu
-    end
+    
 end
 
 
 luke = Checkin.new
+# luke.main_menu
+# luke.anxiety_scores
 luke.main_menu
-luke.anxiety_scores
