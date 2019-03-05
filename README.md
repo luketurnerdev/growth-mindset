@@ -79,7 +79,8 @@ Initally, I (Luke) sat down and brainstormed a lot of different ideas for an app
 
 [insert screenshot of brainstorm]
 
-![alt-text]( https://github.com/luketurnerdev/growth-mindset/blob/master/docs/brainstorming-written.jpg "brainstorming-written")
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/brainstorming-written.jpg "Brainstorming")
 
 
 
