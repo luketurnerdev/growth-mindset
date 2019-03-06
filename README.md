@@ -200,10 +200,14 @@ Notes:
 -system("clear") is used to clear the screen and create a more presentable output
 -all class instance variables are readable and writable, except @username, which doesn't need to change.
 
+## Further development
+
+In future, I would like to be able to have multiple users with separate anxiety lists etc. These could all be stored in separate files. These features were avoied due to time restrictions.
+
 
 ## TESTING
 
-The app was tested throughout its production, but a formal testing operation is listed in the following spreadsheet:
+The app was tested throughout its production, and a formal testing operation was completed. Its details are listed in the following spreadsheet:
 
 https://docs.google.com/spreadsheets/d/1GtGHyFpPlKU40JDb3bCUdcNKJub6UWzDLekybsrI3Ok/edit?usp=sharing 
 
