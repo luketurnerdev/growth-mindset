@@ -2,9 +2,10 @@
 
 https://github.com/luketurnerdev/growth-mindset
 
-Note: when using app please login with the following (case sensitive):
+**Note**: when using app please login with the following (case sensitive):
     user: luke
     password: password123
+
 ## DESCRIPTION OF APP
 
 Growth Mindset is a mental health journaling app that lets users 'check in' and rate their levels of anxiety as well as allowing them to enter longer, free-form style journal entries. The user is provided with a random mental health tip if their mental state is getting worse, and encouragement if they are getting better.
@@ -71,38 +72,38 @@ Here are some screenshots of the app in action:
 
 [1. Login screen]
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-1.png "Login screen)
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-1.png "Login screen")
 
 This screen shows a successful user login, and the main menu that they are presented with afterwards.
 
 [2. Positive result]
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-positive.png "Positive comparison)
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-positive.png "Positive comparison")
 
 This shows a positive outcome (reduction in anxiety) in the anxiety log. 
 
 [3. Negative result]
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-negative.png "negative comparison)
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-negative.png "negative comparison")
 
 This shows the user receiving a random tip as a result of a negative anxiety log comparison.
 
 [4. New journal]
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-newjournal.png "new journal entry)
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-newjournal.png "new journal entry")
 
 The users enters a new journal entry, and the list of current entries is output.
 
 [6. Resources]
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-resources.png "resources)
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-resources.png "resources")
 
 This shows the options available under resources.
 
 
 [7. Headpsace]
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-headspace.png "new journal entry)
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-headspace.png "new journal entry")
 
 This is the user's browser opening after selecting the 'headspace' resource.
 
@@ -118,7 +119,7 @@ Initally, I (Luke) sat down and brainstormed a lot of different ideas for an app
 
 ![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/brainstorming-typed.png "Brainstorming, typed")
 
-### Planning - Flowcharts, trello
+### Planning - Flowcharts, trello, timeline
 
 After discussions with my tutor, I decided to keep the scope of the project quite small, and focus on a few core features. I then drew a flowchart of the way that the user might move through the system.
 
@@ -148,41 +149,61 @@ The board contained the following categories (not all pictured):
 - Backlog (things to be done but haven't had a date or user assigned yet)
 - To Do (Tasks to be done soon with a deadline set)
 - In deveopment (features that are currently being coded (half-working etc)
-- Testing (All 'working' features were moved here until final code checks on the last day (for edge cases etc))
+- Testing (All 'working' features were moved here until final code checks on the last day (for edge cases etc) ==> These were later moved to the testing spreadsheet
 - Complete (features that are safe and ready to 'deploy')
+
+## Timeline
+
+The project's tasks and estimated completion times were added to a spreadsheet:
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/timeline.png "Initial Trello board.")
+
 
 ## Development
 
 After the idea was approved and the general structure of the features to be included was created, development began.
 
-The following is a summary of the main features of the app:
+The entire project is contained within the "Checkin" class, which contains all the class instance variables and methods used. The variables are established in initialize. At the bottom of the file, a new instance of the Checkin class is created, and the user is then prompted to login.
 
-1) Login
+The following is a brief description of the way the code for the various methods works:
 
-The login feature
+1) login_screen
 
-### Additional features
+The login feature uses a hash to store the 2 example keys (users) with their corresponding values (passwords). The code then simply checks if the user's input for each field matches those stored in the hash, and returns the user to the input prompt if the information doesn't match up.
 
+2) main_menu
 
+Uses a while loop to keep prompting the user until a valid input is given - if/else statements are then used to detect input for the 4 options.
 
+3) anxiety_level
 
+Uses an array to store past anxiety scores. If the array is empty, simply pushes to the array and returns to the main menu. Otherwise, compare_levels is called.
 
-## Challenges
+4) compare_levels
 
-Th
+On second entry, the last element of the array and the second last element are compared, if the last element is higher (higher anxiety), a random tip is displayed using Random.rand(min,max). Otherwise, a random encouragement message is displayed. The tip is contained in display_tip, and an average is also generated by calling display_average.
 
+5) display_average
 
+Sets up a sum variable, loops through the array of anxiety levels, and returns the average by dividing by array.length.
 
+6) journal_entry
 
+Uses while loops and if/else statements as before to control data flow. The Time class is called, and added to the journal entry to mark the date and time added. If the user is viewing past entries, these are displayed with newline statements for readability, unless the journal is empty, in which case a message stating this is given.
 
+7) resources
 
+Uses same control flow to select options, but only exits out once the "4" option is returned (to allow users to open as many links as they'd like). Opening the link runs system("open [link]"), which opens the link in a browser on UNIX systems.
 
-
+Notes: 
+-sleep(int) is used to halt execution of code for a given amount of seconds
+-system("clear") is used to clear the screen and create a more presentable output
+-all class instance variables are readable and writable, except @username, which doesn't need to change.
 
 
 ## TESTING
 
-The following spreadsheet tested all the functionality of the project:
+The app was tested throughout its production, but a formal testing operation is listed in the following spreadsheet:
 
 https://docs.google.com/spreadsheets/d/1GtGHyFpPlKU40JDb3bCUdcNKJub6UWzDLekybsrI3Ok/edit?usp=sharing 
 
@@ -194,6 +215,7 @@ After all tests were completed and recorded, the code was 'audited' line by line
 - Spelling mistakes were fixed
 - Code was as DRY as possible
 - Comments for potential features were either removed, or the features added
+- Comments with (###) added to provide a general description of a method
 
 
 
@@ -202,29 +224,18 @@ After all tests were completed and recorded, the code was 'audited' line by line
 
 
 
+## Ethical issues
+
+This app is centred around mental health which can be a difficult topic. In a real implementation, it is important not to give the user such generic responses, as this could be interpreted as their problems being undermined. It is also important to make sure that this app's data is never shared with anyone that could shame the user for using it.
 
 
-
-
-
-1. Rationale / Aims of the project / mission statement
-
-2. Planning (flowcharts, trello etc)
-
-2. Core functionality
-
-3. Extra features
-
-4. Development process
-
-6. User stories...
 
 
 This file should contain,
 
-A link to your GitHub repository
-Ensure the repository (repo) is accessible by your Educators
-Description of the app, including,
+A link to your GitHub repository /
+Ensure the repository (repo) is accessible by your Educators /
+Description of the app, including, 
 Purpose
 Functionality
 Instructions for use

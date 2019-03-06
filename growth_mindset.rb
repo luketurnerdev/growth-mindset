@@ -37,7 +37,11 @@ class Checkin
 
         ]
 
+        #Journal entry array
+
         @entries = []
+
+        #Array of messages upon receiving an improved anxiety rating
 
         @improvement_messages = 
         [
@@ -49,57 +53,54 @@ class Checkin
 
         ]
 
-        
-
-
     end
+
+    
     
   def main_menu
 
-        # Maybe only display first line on first visit? If time allows
+        ### Let the user select from the features of the app ###
+
         entry = false
 
         while !entry
 
-        
-        puts "Welcome to Growth Mindset, #{@username.capitalize}!\n\nPlease select from the following options:"
-        puts "1. Anxiety Log\n2. Journal Entry\n3. Resources\n4. Exit "
-        puts "Type the number or the word of your selection: "
-        choice = gets.chomp.downcase
-        
+            puts "Welcome to Growth Mindset, #{@username.capitalize}!\n\nPlease select from the following options:"
+            puts "1. Anxiety Log\n2. Journal Entry\n3. Resources\n4. Exit "
+            puts "Type the number or the word of your selection: "
+            choice = gets.chomp.downcase
+            
 
-        if choice == "1" or choice == "anxiety"
-            anxiety_level
-            entry = true
+            if choice == "1" or choice == "anxiety"
+                anxiety_level
+                entry = true
 
-        elsif choice == "2" or choice == "journal"
-            journal_entry
-            entry = true
+            elsif choice == "2" or choice == "journal"
+                journal_entry
+                entry = true
 
-        elsif choice == "3" or choice == "resources"
-            resources
-            entry = true
+            elsif choice == "3" or choice == "resources"
+                resources
+                entry = true
 
 
-        elsif choice == "4" or choice == "exit"
-            puts "Thanks for using the app!"
-            #Maybe save changes to file?
-            exit
+            elsif choice == "4" or choice == "exit"
+                puts "Thanks for using the app!"
+                exit
 
-        else
-            puts "Invalid entry."
-        end
+            else
+                puts "Invalid entry."
+            end
 
 
 
         end
 
-       
-        
-        
     end
 
     def anxiety_level
+
+        ### Gets an anxiety rating from the user and stores the info ###
 
         system("clear")
 
@@ -113,31 +114,29 @@ class Checkin
             puts "A 1 represents very calm, and a 10 represents \nnear-panic attack levels of anxiety."
             level = gets.chomp
     
-            #Here we are using a regular expression to check if the string input is a digit
-            #String.scan creates an array of all occurences of non-digits
-            
-    
-            # It then checks if the resulting array is empty
+            #   Here we are using a regular expression to check if the string input is a digit
+            #   String.scan creates an array of all occurences of non-digits
+            #   It then checks if the resulting array is empty
             
             if level.scan(/\D/).empty?
                 #Actual integer conversion
                 level = level.to_i
     
-                
                 #Check if the number is within the range 1..10
                 if level >0 and level <=10
                     valid_level = true
+
+                elsif level <0
+                    system("clear")
+                    puts "\nPlease enter a valid number between 1 and 10.\n\n"
     
                 else
-                #Insert system.clear maybe?
+                system("clear")
                 puts "\nPlease enter a valid number between 1 and 10.\n\n"
             end
     
     
-            else
-                
-    
-                #Maybe clear screen here?
+            
             end
     
         end
@@ -145,8 +144,8 @@ class Checkin
             puts "\nThank you for recording your score of #{level}."
 
             #Wait for a brief moment before returning to menu or comparing levels
-            sleep(0.3)
-    
+            sleep(1)
+            system("clear")
             #Take input from recently entered level variable
             #Add this to a list of values
 
@@ -162,17 +161,6 @@ class Checkin
                 compare_levels(@anxiety_scores)
 
             end
-
-            
-
-            
-            #Maybe store in a hash?
-    
-            #Array might be better - do we need to store values?
-    
-            #Format of {:entry1 => 5, :entry2 => 7}, etc
-    
-            #Then compare values (e.g., 5,7) for the comparison method
     
     
     end
@@ -181,15 +169,18 @@ class Checkin
     
     def compare_levels(list)
         
-
-
-        #First part: Compare the current value to the last one and display if the user is 
+        ### Compare the current value to the last one and display if the user is 
         #   doing better or worse. On the first time we will need to ignore this.
 
         if list[-1] < list[-2]
             #Randomize encouragement message
             random = Random.new
             puts "\n\n#{improvement_messages[random.rand(1..@improvement_messages.length)]}"
+            display_average
+            main_menu
+
+        elsif list[-1] == list[-2]
+            puts "Looks like your anxiety levels are about the same as last time. Remember to keep checking in!"
             display_average
             main_menu
 
@@ -211,6 +202,7 @@ class Checkin
                         main_menu
                 else
                        puts "\nInvalid input, please type either Y or N. "
+                       sleep(1)
                 end
 
 
@@ -225,11 +217,12 @@ class Checkin
     end
 
     def display_tip
-        #We need to have a pre-defined list of tips to display to the user.
-        # This will likely be stored in a hash, so that we can identify unique keys.
-        # Once all tips have been used, we might display a message like "out of new tips, try again later!"
 
-        #Firstly we will have the tips be pre-made, then we can try to fetch them from online using a gem (if there is time)
+        ### Display a helpful tip if the user is getting worse ###
+
+        #We need to have a pre-defined list of tips to display to the user.
+        #Firstly we will have the tips be pre-made, then we can try to fetch 
+        #them from online using a gem (if there is time)
 
         random = Random.new
         
@@ -261,6 +254,8 @@ class Checkin
 
     def journal_entry
 
+        ### Allow the user to create journal entries and view past entries ###
+
         puts ("\nWould you like to view existing journal entries or add a new one ?
         \nEnter (1) to add, or (2) to view previous entries.
         \nEnter (3) to return to the main menu.")
@@ -272,45 +267,47 @@ class Checkin
             date = Time.now
 
             #Add the new entry to the array along with current date and time
+
             new_journal = date.to_s + " " +  new_journal
             
-            #method for updating the key everytime the user calls to add new journal so we can save it. 
-            # date and time hash
             @entries.push(new_journal)
-            puts "Journal entry added!"
+            puts "\nJournal entry added!"
+            sleep(0.5)
+            system("clear")
         
         elsif(ret_val == "2")
             if(entries == [])
-                p "No journals added."
+                system("clear")
+                puts "\nNo journals added."
             else
                 system("clear")
                 #Cleaning up some formatting with loop (for new lines)
+
                 i = 0 
                 while i < @entries.length
                     puts "#{@entries[i]} \n\n"
                     i+=1
                 end
-                # p @entries
+                
             end
         elsif(ret_val == "3")
             main_menu
 
         else
             puts "Invalid entry: please enter 1, 2 or 3."
+            sleep(1)
         end
-
+        sleep(0.5)
         journal_entry
-
-        #Maybe let the user choose if they want to view past entries (if they exist)
-        #   or enter a new one. These should be stored as strings, and marked with the date and time.
-        #   so we could have a hash ==> my_journal = {:entry1 => "Today I felt good" + "This entry was
-        #   recorded at (Date.time"} etc.
     end
 
     
 end
 
 def resources
+
+    ### Display resources to mental health organizations and allow users to open links ###
+
     puts "Here are some resources for help with mental health issues (press the number to open a link): "
     puts "\n1. Black Dog Institute"
     puts "\n2. Headspace  "
@@ -338,37 +335,35 @@ def resources
 
     end
 
-    
-
-    
-
 end
-
 
 
 def login_screen
 
-    login = 
+    ### Prompt the user to login with pre-defined logins and passwords ###
+
+    logins = 
     {
     :luke => "password123",
     :sid => "password124"
     }
 
-ret = 0
-while (ret == 0 )
-    puts ( "Welcome! Please enter your username.")
+entry = false
+while (!entry )
+    puts ( "Welcome! Please enter your username. (Hint: it's luke)" )
         id = gets.chomp
-    puts ("Please enter your password." )
+    puts ("Please enter your password. (Hint: it's password123)" )
         val = gets.chomp
 
-        if (id === "luke" && login[:luke] == val )
-            ret = 1
-        end
-        if(id === "sid" && login[:sid] == val)
-            ret = 1
-        end
-        if ( ret == 0)
-        puts ("\nInvalid login ID or password. Please try again.")
+        if (id === "luke" && logins[:luke] == val )
+            entry = true
+        
+        elsif(id === "sid" && logins[:sid] == val)
+            entry = true
+        
+        else
+            system("clear")
+            puts ("Invalid login ID or password. Please try again.\n")
         end
 end
 
@@ -377,9 +372,11 @@ system("clear")
 
 end
 
+
+### Class and function calls ###
+
 login_screen
 user = Checkin.new (@username)
 user.main_menu
-user.journal_entry
 
 
