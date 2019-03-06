@@ -1,29 +1,29 @@
-GROWTH MINDSET
+#GROWTH MINDSET
 
 https://github.com/luketurnerdev/growth-mindset
 
 
-DESCRIPTION OF APP
+## DESCRIPTION OF APP
 
 Growth Mindset is a mental health journaling app that lets users 'check in' and rate their levels of anxiety as well as allowing them to enter longer, free-form style journal entries. The user is provided with a random mental health tip if their mental state is getting worse, and encouragement if they are getting better.
 
-PROJECT AIMS / MISSION STATEMENT
+## PROJECT AIMS / MISSION STATEMENT
 
 The aim of Growth Mindset is to provide a long-term journal for users suffering from mental health issues such as depression and anxiety. It can sometimes be hard to get an accurate perspective on your mental health over time, and a journaling app such as this one can provide a long-term snapshot of how your mental state has been progressing.
 
-USER STORIES
+### USER STORIES
 
-The following are user stories that we had in mind while designing this project.
+The following are user stories that we had in mind while designing this project. These users helped us design the program with end users' needs in mind.
 
-[user story 1]
+1. As Luke, I want to be able to log my feelings so that I can track my progress over time.
 
-[user story 2]
+2. As Francine, I want to help my patients express themselves so that I can better treat them in my practice.
 
-[user story 3]
+3. As Jimmy, I want to have a platform for mental health management so that I can avoid using older technology (such as a physical journal).
 
-[user story 4]
+4. As David, I want to give my son resources to help himself so that he can communicate better with others.
 
-FUNCTIONALITY
+## FUNCTIONALITY
 
     The user enters the app and is greeted and asked for their name. They are then presented with a main menu, in which they can choose from the following options :
 
@@ -37,18 +37,14 @@ FUNCTIONALITY
 
     3) Resources
 
-        The resources option [.........]
+        The resources option presents users with a list of links relating to mental health (such as Headspace). When the user enters the number corresponding to the relevant link, the link should open in their browser, using a shell command (if the user is using Mac or Linux).
 
     4) Exit
 
         The user is given a goodbye message and the app terminates.
 
 
-INSTRUCTIONS FOR USE
-
-A) Cloning from github
-
-B) Running the file locally (downloaded zip folder)
+## INSTRUCTIONS FOR USE
 
 As a command-line interface project, the app is controlled entirely with the keyboard, by typing commands. In most instances, there are multiple ways of entering data (either through numbers or the words of the options).
 
@@ -65,7 +61,7 @@ As a command-line interface project, the app is controlled entirely with the key
     6. You may exit the app at any time by either selecting the exit option from the main menu, or simply pressing CMD+C (CTRL+C on windows) to exit the application.
 
 
-SCREENSHOTS
+## SCREENSHOTS
 
 Here are some screenshots of the app in action:
 
@@ -107,9 +103,9 @@ This shows the options available under resources.
 This is the user's browser opening after selecting the 'headspace' resource.
 
 
-DESIGN AND PLANNING PROCESS
+## DESIGN AND PLANNING PROCESS
 
-    1. Initial brainstorm   
+### Initial brainstorm   
 
 Initally, I (Luke) sat down and brainstormed a lot of different ideas for an app. My intention was to have a free-flowing thought process in which no idea a bad idea. A lot of the ideas had to be abandoned due to scope (there are only 2 days to work on the app), but this 'judgement-free' style of brainstorming worked well for creating ideas.
 
@@ -118,7 +114,7 @@ Initally, I (Luke) sat down and brainstormed a lot of different ideas for an app
 
 ![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/brainstorming-typed.png "Brainstorming, typed")
 
-    2. Planning - Flowcharts, trello
+### Planning - Flowcharts, trello
 
 After discussions with my tutor, I decided to keep the scope of the project quite small, and focus on a few core features. I then drew a flowchart of the way that the user might move through the system.
 
@@ -134,7 +130,7 @@ The flowchart shows the core functionality of the program:
 
 The final flowchart (with the resources added and more detail on selections):
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/first-trello.png "Updated flowchart.")
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/flowchart-final.png "Updated flowchart.")
 
 I also then created a Trello board, which contained various categories:
 
@@ -151,6 +147,18 @@ The board contained the following categories (not all pictured):
 - Testing (All 'working' features were moved here until final code checks on the last day (for edge cases etc))
 - Complete (features that are safe and ready to 'deploy')
 
+## Development
+
+After the idea was approved and the general structure of the features to be included was created, development began.
+
+The code initally developed simply using methods
+
+
+
+## Challenges
+
+Thor
+
 
 
 
@@ -161,6 +169,12 @@ The board contained the following categories (not all pictured):
 
 
 TESTING
+
+The following spreadsheet tested all the functionality of the project:
+
+https://docs.google.com/spreadsheets/d/1GtGHyFpPlKU40JDb3bCUdcNKJub6UWzDLekybsrI3Ok/edit?usp=sharing 
+
+[screenshot of completed test]
 
 - Normal functionality
 - Edge cases

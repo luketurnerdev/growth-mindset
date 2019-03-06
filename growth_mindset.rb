@@ -12,6 +12,7 @@ class Checkin
     #Class variable => This applies to all instances
 
     def initialize(username)
+
         #assign username based on user input during instantiation
 
         @username = username
@@ -43,32 +44,7 @@ class Checkin
 
     end
     
-    
-
-    def populate_random_tips
-        #We need to add to the list of health tips by running through a loop
-        # Example tip: {:tip1 => "Go for a run!"}
-
-
-        #Start iteration at the end of the current list of hashes (need to test this)
-
-        # i = @health_tips.keys.length + 1
-        # while i < 5
-        #     current_key = "key#{i}".to_sym
-        #     @health_tips[current_key] = "random tip goes here"
-        #     i += 1
-        # end
-
-        
-
-
-        
-    end
-
-
-    
-
-    def main_menu
+  def main_menu
 
         # Maybe only display first line on first visit? If time allows
         entry = false
@@ -345,7 +321,10 @@ def resources
             exiting = true
             main_menu
 
+        else
+            puts "Invalid entry, please enter 1,2,3 or 4."
         end
+
     end
 
     
