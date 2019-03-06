@@ -1,14 +1,6 @@
 ### Growth Mindset - A mental health journaling app ###
 
-# First component - reporting anxiety levels on a scale of 1-10
 
-#Ask the user how they're feeling in terms of anxiety..
-
-#Record the input as an integer
-
-#Make sure user can only enter numbers between 1-10, no letter strings allowed
-
-require "simple-random"
 
 class Checkin
     
@@ -84,7 +76,7 @@ class Checkin
         while !entry
 
         
-        puts "\nWelcome to Growth Mindset, #{@username.capitalize}!\n\nPlease select from the following options:"
+        puts "Welcome to Growth Mindset, #{@username.capitalize}!\n\nPlease select from the following options:"
         puts "1. Anxiety Log\n2. Journal Entry\n3. Resources\n4. Exit "
         puts "Type the number or the word of your selection: "
         choice = gets.chomp.downcase
@@ -123,9 +115,11 @@ class Checkin
 
     def anxiety_level
 
+        system("clear")
+
         valid_level = false
     
-        puts "\nOn a scale of 1-10, how anxious are you feeling today?\n\n"
+        puts "On a scale of 1-10, how anxious are you feeling today?\n\n"
     
         #Loop to check for valid input
     
@@ -163,6 +157,9 @@ class Checkin
         end
             
             puts "\nThank you for recording your score of #{level}."
+
+            #Wait for a brief moment before returning to menu or comparing levels
+            sleep(0.3)
     
             #Take input from recently entered level variable
             #Add this to a list of values
@@ -179,6 +176,8 @@ class Checkin
                 compare_levels(@anxiety_scores)
 
             end
+
+            
 
             
             #Maybe store in a hash?
@@ -274,30 +273,46 @@ class Checkin
 
 
     def journal_entry
-        puts ("Would you like to view existing journal entries or add a new one ?\n Enter (1) to add, or (2) to view previous entries.\n")
+
+        puts ("\nWould you like to view existing journal entries or add a new one ?
+        \nEnter (1) to add, or (2) to view previous entries.
+        \nEnter (3) to return to the main menu.")
+
         ret_val = gets.chomp()
         if(ret_val == "1")
             puts("Start typing ... \n ")
             new_journal = gets.chomp()
             date = Time.now
 
-            #Add the new entry to the array
+            #Add the new entry to the array along with current date and time
             new_journal = date.to_s + " " +  new_journal
             
             #method for updating the key everytime the user calls to add new journal so we can save it. 
             # date and time hash
             @entries.push(new_journal)
-            p @entries
-        end
-        if(ret_val =="2")
+            puts "Journal entry added!"
+        
+        elsif(ret_val == "2")
             if(entries == [])
                 p "No journals added."
             else
-            p @entries
+                system("clear")
+                #Cleaning up some formatting with loop (for new lines)
+                i = 0 
+                while i < @entries.length
+                    puts "#{@entries[i]} \n\n"
+                    i+=1
+                end
+                # p @entries
             end
+        elsif(ret_val == "3")
+            main_menu
+
+        else
+            puts "Invalid entry: please enter 1, 2 or 3."
         end
 
-        main_menu
+        journal_entry
 
         #Maybe let the user choose if they want to view past entries (if they exist)
         #   or enter a new one. These should be stored as strings, and marked with the date and time.
@@ -368,11 +383,13 @@ while (ret == 0 )
 end
 
 @username = id
+system("clear")
 
 end
 
 login_screen
 user = Checkin.new (@username)
 user.main_menu
+user.journal_entry
 
 

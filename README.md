@@ -67,9 +67,45 @@ As a command-line interface project, the app is controlled entirely with the key
 
 SCREENSHOTS
 
-[ screenshots of the app itself  ]
+Here are some screenshots of the app in action:
 
-[ ]
+[1. Login screen]
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-1.png "Login screen)
+
+This screen shows a successful user login, and the main menu that they are presented with afterwards.
+
+[2. Positive result]
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-positive.png "Positive comparison)
+
+This shows a positive outcome (reduction in anxiety) in the anxiety log. 
+
+[3. Negative result]
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-negative.png "negative comparison)
+
+This shows the user receiving a random tip as a result of a negative anxiety log comparison.
+
+[4. New journal]
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-newjournal.png "new journal entry)
+
+The users enters a new journal entry, and the list of current entries is output.
+
+[6. Resources]
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-resources.png "resources)
+
+This shows the options available under resources.
+
+
+[7. Headpsace]
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/appshot-headspace.png "new journal entry)
+
+This is the user's browser opening after selecting the 'headspace' resource.
+
 
 DESIGN AND PLANNING PROCESS
 
@@ -96,6 +132,10 @@ The flowchart shows the core functionality of the program:
 - Let the user submit journal entries and view past entries
 - Exit the application.
 
+The final flowchart (with the resources added and more detail on selections):
+
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/first-trello.png "Updated flowchart.")
+
 I also then created a Trello board, which contained various categories:
 
 ![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/first-trello.png "Initial Trello board.")
@@ -119,6 +159,13 @@ The board contained the following categories (not all pictured):
 
 
 
+
+TESTING
+
+- Normal functionality
+- Edge cases
+
+-
 
 
 
