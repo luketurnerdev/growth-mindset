@@ -5,7 +5,7 @@
 class Checkin
     
 
-    attr_accessor :anxiety_scores, :health_tips, :entries
+    attr_accessor :anxiety_scores, :health_tips, :entries, :improvement_messages
 
     attr_reader :username
 
@@ -38,6 +38,16 @@ class Checkin
         ]
 
         @entries = []
+
+        @improvement_messages = 
+        [
+        "Congrats, you're doing better than last time!",
+        "Looks like you are feeling less anxious! I'm happy for you :) ",
+        "I knew you could do it! Your anxiety is getting better. ",
+        "I'm glad to hear you're feeling better than last time!",
+        "We all go through ups and down, but looks like you're doing okay right now!"
+
+        ]
 
         
 
@@ -115,7 +125,7 @@ class Checkin
     
                 
                 #Check if the number is within the range 1..10
-                if level >0 and level <10
+                if level >0 and level <=10
                     valid_level = true
     
                 else
@@ -177,8 +187,9 @@ class Checkin
         #   doing better or worse. On the first time we will need to ignore this.
 
         if list[-1] < list[-2]
-            #Randomize encouragement message ? 
-            puts "\nIt looks like you are doing better than your last entry! Go you!"
+            #Randomize encouragement message
+            random = Random.new
+            puts "\n\n#{improvement_messages[random.rand(1..@improvement_messages.length)]}"
             display_average
             main_menu
 

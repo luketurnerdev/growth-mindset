@@ -1,8 +1,10 @@
-#GROWTH MINDSET
+# GROWTH MINDSET
 
 https://github.com/luketurnerdev/growth-mindset
 
-
+Note: when using app please login with the following (case sensitive):
+    user: luke
+    password: password123
 ## DESCRIPTION OF APP
 
 Growth Mindset is a mental health journaling app that lets users 'check in' and rate their levels of anxiety as well as allowing them to enter longer, free-form style journal entries. The user is provided with a random mental health tip if their mental state is getting worse, and encouragement if they are getting better.
@@ -52,7 +54,9 @@ As a command-line interface project, the app is controlled entirely with the key
 
     2. Navigate to the directory containing your copy of growth_mindset.rb using [cd [directory]], and run it by typing [ruby growth_mindset.rb].
 
-    3. You will be greeted, and asked for your name. Enter your name.
+    3. You will be greeted, and asked to login, please use
+        - username: luke 
+        - password: password123
 
     4. You are now in the main menu. You may type numbers (1,2,3 or 4) or type the words 'anxiety', 'journal', 'resources' or 'exit',  whatever you prefer (case is accounted for). Other inputs will return an error.
 
@@ -151,13 +155,21 @@ The board contained the following categories (not all pictured):
 
 After the idea was approved and the general structure of the features to be included was created, development began.
 
-The code initally developed simply using methods
+The following is a summary of the main features of the app:
+
+1) Login
+
+The login feature
+
+### Additional features
+
+
 
 
 
 ## Challenges
 
-Thor
+Th
 
 
 
@@ -168,18 +180,21 @@ Thor
 
 
 
-TESTING
+## TESTING
 
 The following spreadsheet tested all the functionality of the project:
 
 https://docs.google.com/spreadsheets/d/1GtGHyFpPlKU40JDb3bCUdcNKJub6UWzDLekybsrI3Ok/edit?usp=sharing 
 
-[screenshot of completed test]
 
-- Normal functionality
-- Edge cases
+## Code Cleanup
 
--
+After all tests were completed and recorded, the code was 'audited' line by line in order to make sure that:
+
+- Spelling mistakes were fixed
+- Code was as DRY as possible
+- Comments for potential features were either removed, or the features added
+
 
 
 
