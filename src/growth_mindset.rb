@@ -1,6 +1,9 @@
 ### Growth Mindset - A mental health journaling app ###
 
+require 'smart_colored'
 
+
+# require ‘smart_colored/extend’
 
 class Checkin
     
@@ -350,7 +353,7 @@ def login_screen
 
 entry = false
 while (!entry )
-    puts ( "Welcome! Please enter your username. (Hint: it's luke)" )
+    puts ( "Welcome! Please enter your username. (Hint: it's luke)")
         id = gets.chomp
     puts ("Please enter your password. (Hint: it's password123)" )
         val = gets.chomp

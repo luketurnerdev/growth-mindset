@@ -156,7 +156,7 @@ The board contained the following categories (not all pictured):
 
 The project's tasks and estimated completion times were added to a spreadsheet:
 
-![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/timeline.png "Initial Trello board.")
+![alt text](https://github.com/luketurnerdev/growth-mindset/blob/master/docs/timeline.png "Task timeline.")
 
 
 ## Development
@@ -218,36 +218,12 @@ After all tests were completed and recorded, the code was 'audited' line by line
 - Comments with (###) added to provide a general description of a method
 
 
-
-
-
-
-
-
 ## Ethical issues
 
 This app is centred around mental health which can be a difficult topic. In a real implementation, it is important not to give the user such generic responses, as this could be interpreted as their problems being undermined. It is also important to make sure that this app's data is never shared with anyone that could shame the user for using it.
 
+## Resources 
 
-
-
-This file should contain,
-
-A link to your GitHub repository /
-Ensure the repository (repo) is accessible by your Educators /
-Description of the app, including, 
-Purpose
-Functionality
-Instructions for use
-Screenshots
-Details of design & planning process including,
-Evidence of app idea brainstorming sessions
-app User/Workflow diagram
-Project plan & timeline
-Screenshots of Trello board(s)
-
-RANDOM RESOURCES TO SORT THROUGH
-
-
-https://www.healthdirect.gov.au/tips-for-good-mental-health
-
+Black dog - http://www.blackdoginstitute.org.au/public/gettinghelp/overview.cfm
+Headspace - http://www.headspace.org.au/
+Lifeline - http://www.lifeline.org.au/
